@@ -32,6 +32,7 @@ public class loginScreen extends javax.swing.JFrame {
         cl = (CardLayout) getContentPane().getLayout();
         
         panels.put("mainMenu", new mainMenu(this));
+        panels.put("selectedLanguage", new selectedLanguage (this));
         
         for (Map.Entry<String, JPanel> entry : panels.entrySet()) {
             getContentPane().add(entry.getValue(), entry.getKey());

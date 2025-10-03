@@ -75,6 +75,11 @@ public class mainMenu extends javax.swing.JPanel {
         languageSelection.setText("Language selection");
         languageSelection.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 0, 0)));
         languageSelection.setPreferredSize(new java.awt.Dimension(0, 0));
+        languageSelection.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                languageSelectionActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -212,6 +217,11 @@ public class mainMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
         login.showPanel("card2");
     }//GEN-LAST:event_logOutActionPerformed
+
+    private void languageSelectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageSelectionActionPerformed
+        // TODO add your handling code here:
+        showPanel("selectedLanguage");
+    }//GEN-LAST:event_languageSelectionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

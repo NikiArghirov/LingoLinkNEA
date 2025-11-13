@@ -9,12 +9,14 @@ package nea.coursework.lingolink;
  * @author 4-narghirov
  */
 public class unitTest extends javax.swing.JPanel {
+    private final loginScreen loginPanel;
 
     /**
      * Creates new form unitTest
      */
-    public unitTest() {
+    public unitTest(loginScreen login) {
         initComponents();
+        this.loginPanel = login;
     }
 
     /**
@@ -36,7 +38,7 @@ public class unitTest extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        previousHolder = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -52,6 +54,11 @@ public class unitTest extends javax.swing.JPanel {
         jButton1.setText("Quit test");
         jButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 0, 0)));
         jButton1.setPreferredSize(new java.awt.Dimension(0, 0));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
@@ -168,26 +175,17 @@ public class unitTest extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         jPanel4.add(jButton2, gridBagConstraints);
 
-        previousHolder.setBackground(new java.awt.Color(193, 230, 223));
-
-        javax.swing.GroupLayout previousHolderLayout = new javax.swing.GroupLayout(previousHolder);
-        previousHolder.setLayout(previousHolderLayout);
-        previousHolderLayout.setHorizontalGroup(
-            previousHolderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        previousHolderLayout.setVerticalGroup(
-            previousHolderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
+        jButton3.setBackground(new java.awt.Color(242, 242, 242));
+        jButton3.setText("Previous");
+        jButton3.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 0, 0)));
+        jButton3.setPreferredSize(new java.awt.Dimension(0, 0));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.5;
         gridBagConstraints.weighty = 1.0;
-        jPanel4.add(previousHolder, gridBagConstraints);
+        jPanel4.add(jButton3, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -262,10 +260,16 @@ public class unitTest extends javax.swing.JPanel {
         add(jPanel8, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        loginPanel.showPanel("progress");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -277,6 +281,5 @@ public class unitTest extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel previousHolder;
     // End of variables declaration//GEN-END:variables
 }

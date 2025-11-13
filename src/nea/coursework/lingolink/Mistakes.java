@@ -136,7 +136,6 @@ public class Mistakes extends javax.swing.JPanel {
         jPanel2.add(jPanel4, gridBagConstraints);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Mistakes");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel2.setPreferredSize(new java.awt.Dimension(0, 0));

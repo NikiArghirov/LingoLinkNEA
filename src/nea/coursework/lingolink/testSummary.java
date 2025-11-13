@@ -42,7 +42,7 @@ public class testSummary extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(0, 0));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Exit Test");
         jButton1.setPreferredSize(new java.awt.Dimension(0, 0));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;

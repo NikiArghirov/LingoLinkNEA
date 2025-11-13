@@ -35,6 +35,7 @@ public class loginScreen extends javax.swing.JFrame {
         panels.put("selectedLanguage", new selectedLanguage (this));
         panels.put("progress", new progress (this));
         panels.put("Mistakes", new Mistakes (this));
+        panels.put("unitTest", new unitTest (this));
         
         for (Map.Entry<String, JPanel> entry : panels.entrySet()) {
             getContentPane().add(entry.getValue(), entry.getKey());

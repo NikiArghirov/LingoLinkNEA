@@ -412,8 +412,7 @@ private void showTestSummary() {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         loginPanel.showPanel("progress");
-        
-        
+        jButton2.setEnabled(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void AnswerFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnswerFieldActionPerformed

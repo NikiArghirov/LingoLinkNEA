@@ -112,8 +112,8 @@ public class progress extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(193, 230, 223));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setBackground(new java.awt.Color(255, 0, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setBackground(new java.awt.Color(255, 56, 56));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton1.setText("Unit 1");
         jButton1.setBorder(new javax.swing.border.MatteBorder(null));
         jButton1.setPreferredSize(new java.awt.Dimension(0, 0));
@@ -131,7 +131,7 @@ public class progress extends javax.swing.JPanel {
         jPanel2.add(jButton1, gridBagConstraints);
 
         jButton2.setBackground(new java.awt.Color(201, 113, 41));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton2.setText("Unit 2");
         jButton2.setBorder(new javax.swing.border.MatteBorder(null));
         jButton2.setPreferredSize(new java.awt.Dimension(0, 0));
@@ -149,7 +149,7 @@ public class progress extends javax.swing.JPanel {
         jPanel2.add(jButton2, gridBagConstraints);
 
         jButton3.setBackground(new java.awt.Color(82, 168, 75));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton3.setText("Unit 3");
         jButton3.setBorder(new javax.swing.border.MatteBorder(null));
         jButton3.setPreferredSize(new java.awt.Dimension(0, 0));
@@ -167,7 +167,7 @@ public class progress extends javax.swing.JPanel {
         jPanel2.add(jButton3, gridBagConstraints);
 
         jButton4.setBackground(new java.awt.Color(100, 160, 214));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton4.setText("Unit 4");
         jButton4.setBorder(new javax.swing.border.MatteBorder(null));
         jButton4.setPreferredSize(new java.awt.Dimension(0, 0));
@@ -185,7 +185,7 @@ public class progress extends javax.swing.JPanel {
         jPanel2.add(jButton4, gridBagConstraints);
 
         jButton5.setBackground(new java.awt.Color(132, 73, 148));
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton5.setText("Unit 5");
         jButton5.setBorder(new javax.swing.border.MatteBorder(null));
         jButton5.setPreferredSize(new java.awt.Dimension(0, 0));

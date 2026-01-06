@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 /**
  *
  * @author 4-narghirov
+ * https://github.com/NikiArghirov/-NEA-Coursework-LingoLink.git
+ * URL link for github
  */
 public class loginScreen extends javax.swing.JFrame {
 

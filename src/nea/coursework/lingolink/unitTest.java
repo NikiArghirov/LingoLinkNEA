@@ -367,6 +367,7 @@ public class unitTest extends javax.swing.JPanel {
         jPanel5.setPreferredSize(new java.awt.Dimension(0, 0));
         jPanel5.setLayout(new java.awt.GridBagLayout());
 
+        QuestionField.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jScrollPane1.setViewportView(QuestionField);
 
         gridBagConstraints = new java.awt.GridBagConstraints();

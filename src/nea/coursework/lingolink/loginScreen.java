@@ -39,6 +39,7 @@ public class loginScreen extends javax.swing.JFrame {
         panels.put("Mistakes", new Mistakes (this));
         panels.put("unitTest", new unitTest (this));
         panels.put("Leaderboard", new Leaderboard (this));
+        panels.put("Register", new Register (this));
         
         for (Map.Entry<String, JPanel> entry : panels.entrySet()) {
             getContentPane().add(entry.getValue(), entry.getKey());
@@ -270,7 +271,7 @@ public class loginScreen extends javax.swing.JFrame {
         jPanel8.setPreferredSize(new java.awt.Dimension(0, 0));
         jPanel8.setLayout(new java.awt.GridBagLayout());
 
-        jLabel3.setText("Enter Username/email:");
+        jLabel3.setText("Enter Username:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
@@ -309,6 +310,7 @@ public class loginScreen extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

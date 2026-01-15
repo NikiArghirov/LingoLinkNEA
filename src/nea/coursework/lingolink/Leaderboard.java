@@ -30,9 +30,9 @@ public class Leaderboard extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jButton1 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        Return = new javax.swing.JButton();
+        LeaderboardBox = new javax.swing.JPanel();
+        NameOfPage = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -42,12 +42,12 @@ public class Leaderboard extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(0, 0));
         setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setText("Return");
-        jButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 0, 0)));
-        jButton1.setPreferredSize(new java.awt.Dimension(0, 0));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Return.setText("Return");
+        Return.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 0, 0)));
+        Return.setPreferredSize(new java.awt.Dimension(0, 0));
+        Return.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ReturnActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -56,20 +56,20 @@ public class Leaderboard extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.5;
         gridBagConstraints.weighty = 0.4;
-        add(jButton1, gridBagConstraints);
+        add(Return, gridBagConstraints);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel1.setPreferredSize(new java.awt.Dimension(0, 0));
+        LeaderboardBox.setBackground(new java.awt.Color(255, 255, 255));
+        LeaderboardBox.setBorder(new javax.swing.border.MatteBorder(null));
+        LeaderboardBox.setPreferredSize(new java.awt.Dimension(0, 0));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout LeaderboardBoxLayout = new javax.swing.GroupLayout(LeaderboardBox);
+        LeaderboardBox.setLayout(LeaderboardBoxLayout);
+        LeaderboardBoxLayout.setHorizontalGroup(
+            LeaderboardBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 419, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        LeaderboardBoxLayout.setVerticalGroup(
+            LeaderboardBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 273, Short.MAX_VALUE)
         );
 
@@ -80,21 +80,21 @@ public class Leaderboard extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.5;
         gridBagConstraints.weighty = 1.0;
-        add(jPanel1, gridBagConstraints);
+        add(LeaderboardBox, gridBagConstraints);
 
-        jLabel1.setBackground(new java.awt.Color(193, 230, 223));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(2, 136, 113));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Leaderboard");
-        jLabel1.setPreferredSize(new java.awt.Dimension(0, 0));
+        NameOfPage.setBackground(new java.awt.Color(193, 230, 223));
+        NameOfPage.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        NameOfPage.setForeground(new java.awt.Color(2, 136, 113));
+        NameOfPage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NameOfPage.setText("Leaderboard");
+        NameOfPage.setPreferredSize(new java.awt.Dimension(0, 0));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.4;
-        add(jLabel1, gridBagConstraints);
+        add(NameOfPage, gridBagConstraints);
 
         jPanel2.setBackground(new java.awt.Color(193, 230, 223));
 
@@ -187,16 +187,16 @@ public class Leaderboard extends javax.swing.JPanel {
         add(jPanel5, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnActionPerformed
         // TODO add your handling code here:
         loginPanel.showPanel("mainMenu");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ReturnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel LeaderboardBox;
+    private javax.swing.JLabel NameOfPage;
+    private javax.swing.JButton Return;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

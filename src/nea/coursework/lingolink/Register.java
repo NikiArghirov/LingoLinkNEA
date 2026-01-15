@@ -13,10 +13,10 @@ public class Register extends javax.swing.JPanel {
     /**
      * Creates new form Register
      */
-    private final loginScreen login;
-    
-    public Register(loginScreen login) {
-        this.login = login;
+    private final loginScreen loginPanel;
+
+    public Register(loginScreen Register) {
+        this.loginPanel = Register;
         initComponents();
     }
 
@@ -233,6 +233,11 @@ public class Register extends javax.swing.JPanel {
 
         jButton2.setText("Return To Login");
         jButton2.setPreferredSize(new java.awt.Dimension(0, 0));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 9;
@@ -277,6 +282,11 @@ public class Register extends javax.swing.JPanel {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        loginPanel.showPanel("card2");
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

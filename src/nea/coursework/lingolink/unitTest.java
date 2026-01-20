@@ -31,7 +31,7 @@ public class unitTest extends javax.swing.JPanel {
     }
 
     private int currentUnitId = -1;
-    private int currentUserId = 1;
+    private int currentUserId = -1; 
     private ProgressDAO progressDAO = new ProgressDAO();
     private QuestionDAO questionDAO = new QuestionDAO();
     private List<Question> currentQuestions;
@@ -40,6 +40,39 @@ public class unitTest extends javax.swing.JPanel {
     private int totalQuestions = 0;
     private String unitName = "";
 
+    
+    public void setUnitId(int unitId) {
+        this.currentUnitId = unitId;
+        this.currentQuestionIndex = 0;
+        this.score = 0;
+        
+        
+        if (loginPanel != null) {
+            this.currentUserId = loginPanel.getCurrentUserId();
+            System.out.println("UnitTest: Retrieved User ID from login: " + currentUserId);
+        } else {
+            System.out.println("UnitTest: WARNING - loginPanel is null!");
+        }
+        
+        
+        if (currentUserId <= 0) {
+            System.out.println("UnitTest: WARNING - No valid user ID. Using default ID 1.");
+            currentUserId = 1; // Fallback for testing
+        }
+        
+        this.unitName = questionDAO.getUnitNameById(unitId);
+
+        
+        jLabel1.setText(unitName + " Test");
+
+       
+        loadQuestionsForUnit();
+
+      
+        displayCurrentQuestion();
+    }
+    
+    
     public void setUnitId(int unitId, int userId) {
         this.currentUnitId = unitId;
         this.currentUserId = userId;
@@ -47,32 +80,34 @@ public class unitTest extends javax.swing.JPanel {
         this.score = 0;
         this.unitName = questionDAO.getUnitNameById(unitId);
 
-        // Update the title with unit name
+       
         jLabel1.setText(unitName + " Test");
 
-        // Load questions for this unit
+      
         loadQuestionsForUnit();
 
-        // Display the first question
+        
         displayCurrentQuestion();
     }
 
     private void loadQuestionsForUnit() {
         try {
-            // Use the getQuestionsByUnitId method from your QuestionDAO
+            
             currentQuestions = questionDAO.getQuestionsByUnitId(currentUnitId);
 
             if (currentQuestions != null && !currentQuestions.isEmpty()) {
                 totalQuestions = currentQuestions.size();
-                AnswerField.setText(""); // Clear previous answer
+                AnswerField.setText(""); 
                 AnswerField.setEnabled(true);
+                System.out.println("Loaded " + totalQuestions + " questions for Unit " + currentUnitId);
             } else {
-                // No questions found for this unit
+                
                 QuestionField.setText("No questions available for this unit.");
                 AnswerField.setEnabled(false);
                 AnswerField.setText("No questions available");
                 jButton2.setText("Finish Test");
                 totalQuestions = 0;
+                System.out.println("No questions found for Unit " + currentUnitId);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -86,31 +121,35 @@ public class unitTest extends javax.swing.JPanel {
         if (currentQuestions != null && currentQuestionIndex < currentQuestions.size()) {
             Question currentQuestion = currentQuestions.get(currentQuestionIndex);
 
-            // Display the question text
+            
             QuestionField.setText(currentQuestion.getText());
 
-            // Clear the answer field and set placeholder
+            
             AnswerField.setText("");
             AnswerField.setEnabled(true);
 
-            // Update button text if it's the last question
+            
             if (currentQuestionIndex == currentQuestions.size() - 1) {
                 jButton2.setText("Finish Test");
+                System.out.println("Displaying last question #" + (currentQuestionIndex + 1));
             } else {
                 jButton2.setText("Next question");
+                System.out.println("Displaying question #" + (currentQuestionIndex + 1) + " of " + totalQuestions);
             }
         } else {
-            // No more questions, show summary
+            
             showTestSummary();
         }
     }
 
     private void checkAnswerAndMoveNext() {
+        System.out.println("checkAnswerAndMoveNext called - Question #" + (currentQuestionIndex + 1));
+        
         if (currentQuestions != null && currentQuestionIndex < currentQuestions.size()) {
             Question currentQuestion = currentQuestions.get(currentQuestionIndex);
             String userAnswer = AnswerField.getText().trim();
 
-            // Check if answer is correct using the QuestionDAO method
+           
             boolean isCorrect = questionDAO.checkAnswer(
                     currentQuestion.getQuestionId(),
                     userAnswer
@@ -118,24 +157,24 @@ public class unitTest extends javax.swing.JPanel {
 
             if (isCorrect) {
                 score++;
+                System.out.println("Answer correct! Score: " + score);
+            } else {
+                System.out.println("Answer incorrect. Score remains: " + score);
             }
 
-            // Move to next question
+           
             currentQuestionIndex++;
             displayCurrentQuestion();
         } else {
-            // No more questions, show summary
+            
             showTestSummary();
         }
     }
 
     private void showTestSummary() {
         try {
-            // Calculate percentage
+           
             int percentage = calculatePercentage();
-
-            // Save to database
-            boolean saved = progressDAO.saveHighestScore(currentUserId, currentUnitId, percentage);
 
             System.out.println("=== Test Results ===");
             System.out.println("User ID: " + currentUserId);
@@ -143,27 +182,44 @@ public class unitTest extends javax.swing.JPanel {
             System.out.println("Unit Name: " + unitName);
             System.out.println("Score: " + score + "/" + totalQuestions);
             System.out.println("Percentage: " + percentage + "%");
-            System.out.println("Saved to database: " + (saved ? "Yes" : "No"));
 
-            // Check previous score
-            int previousScore = progressDAO.getProgressScore(currentUserId, currentUnitId);
-            if (previousScore != -1) {
-                System.out.println("Previous best: " + previousScore + "%");
+            
+            boolean saved = false;
+            if (currentUserId > 0) {
+                saved = progressDAO.saveHighestScore(currentUserId, currentUnitId, percentage);
+                System.out.println("Saved to database: " + (saved ? "Yes" : "No"));
+
+               
+                int previousScore = progressDAO.getProgressScore(currentUserId, currentUnitId);
+                if (previousScore != -1) {
+                    System.out.println("Previous best: " + previousScore + "%");
+                }
+            } else {
+                System.out.println("WARNING: Not saved - invalid user ID (" + currentUserId + ")");
             }
 
-            // Get the testSummary panel
+           
             testSummary summaryPanel = (testSummary) loginPanel.findPanel("testSummary");
 
             if (summaryPanel != null) {
-                // Pass results to summary panel
+                
                 summaryPanel.setTestResults(score, totalQuestions, unitName);
 
-                // Show the summary panel
+              
                 loginPanel.showPanel("testSummary");
             } else {
-                // Fallback if testSummary panel not found
-                String savedText = saved ? "✓ Saved to database"
-                        : (previousScore >= percentage ? "ℹ Score not saved (previous score was higher)" : "✗ Not saved");
+                
+                String savedText;
+                if (currentUserId <= 0) {
+                    savedText = "⚠ Test not saved (no user logged in)";
+                } else if (saved) {
+                    savedText = "✓ Saved to database";
+                } else {
+                    int previousScore = progressDAO.getProgressScore(currentUserId, currentUnitId);
+                    savedText = (previousScore >= percentage) 
+                        ? "ℹ Score not saved (previous score was higher)" 
+                        : "✗ Not saved";
+                }
 
                 QuestionField.setText("Test completed!\n\n"
                         + "Unit: " + unitName + "\n"
@@ -177,7 +233,7 @@ public class unitTest extends javax.swing.JPanel {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            // Fallback: show a simple message
+            
             QuestionField.setText("Test completed! Score: " + score + "/" + totalQuestions);
             AnswerField.setEnabled(false);
             jButton2.setEnabled(false);
@@ -189,6 +245,12 @@ public class unitTest extends javax.swing.JPanel {
             return 0;
         }
         return (int) Math.round((score * 100.0) / totalQuestions);
+    }
+    
+    
+    public void setCurrentUserId(int userId) {
+        this.currentUserId = userId;
+        System.out.println("UnitTest: User ID manually set to " + userId);
     }
 
     /**

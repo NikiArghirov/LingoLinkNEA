@@ -36,24 +36,23 @@ public class progress extends javax.swing.JPanel {
 
     private void startUnitTest(int unitId) {
         try {
-            // Get the unitTest panel directly
+           
             unitTest testPanel = (unitTest) loginPanel.findPanel("unitTest");
 
             if (testPanel != null) {
-                // Pass unit ID to the test panel
-                testPanel.setUnitId(unitId, currentUserId);
+                
+                testPanel.setUnitId(unitId);
 
-                // Show the test panel
+               
                 loginPanel.showPanel("unitTest");
             }
         } catch (Exception e) {
-            // Simple error handling
-            System.err.println("Error starting unit test: " + e.getMessage());
+            System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
     }
-    // ... other methods and generated code
 
+    // ... other methods and generated code
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

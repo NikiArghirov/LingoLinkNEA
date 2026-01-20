@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package nea.coursework.lingolink;
+
 import com.LingoLink.dao.UserDAO;
 import java.awt.CardLayout;
 import java.util.HashMap;
@@ -13,14 +14,16 @@ import javax.swing.JPanel;
 /**
  *
  * @author 4-narghirov
- * https://github.com/NikiArghirov/-NEA-Coursework-LingoLink.git
- * URL link for github
+ * https://github.com/NikiArghirov/-NEA-Coursework-LingoLink.git URL link for
+ * github
  */
 public class loginScreen extends javax.swing.JFrame {
 
     private CardLayout cl;
-    private final Map<String,JPanel> panels;
-    
+    private final Map<String, JPanel> panels;
+    private int currentUserId = -1; // Add this field
+    private String currentUsername = ""; // Add this field
+
     /**
      * Creates new form loginScreen
      */
@@ -29,31 +32,60 @@ public class loginScreen extends javax.swing.JFrame {
         initComponents();
         initPanels();
     }
-    
+
     private void initPanels() {
         cl = (CardLayout) getContentPane().getLayout();
-        
+
         panels.put("mainMenu", new mainMenu(this));
-        panels.put("selectedLanguage", new selectedLanguage (this));
-        panels.put("progress", new progress (this));
-        panels.put("Mistakes", new Mistakes (this));
-        panels.put("unitTest", new unitTest (this));
-        panels.put("Leaderboard", new Leaderboard (this));
-        panels.put("Register", new Register (this));
-        
+        panels.put("selectedLanguage", new selectedLanguage(this));
+        panels.put("progress", new progress(this));
+        panels.put("Mistakes", new Mistakes(this));
+        panels.put("unitTest", new unitTest(this));
+        panels.put("Leaderboard", new Leaderboard(this));
+        panels.put("Register", new Register(this));
+
         for (Map.Entry<String, JPanel> entry : panels.entrySet()) {
             getContentPane().add(entry.getValue(), entry.getKey());
         }
     }
-    
-    public void showPanel(String name){
+
+    public void showPanel(String name) {
         cl.show(getContentPane(), name);
         getContentPane().revalidate();
         getContentPane().repaint();
     }
-    
-    public JPanel findPanel (String name){
+
+    public JPanel findPanel(String name) {
         return panels.get(name);
+    }
+
+ 
+    public void setLoggedInUser(int userId, String username) {
+        this.currentUserId = userId;
+        this.currentUsername = username;
+        System.out.println("User logged in: " + username + " (ID: " + userId + ")");
+    }
+
+  
+    public int getCurrentUserId() {
+        return currentUserId;
+    }
+
+    
+    public String getCurrentUsername() {
+        return currentUsername;
+    }
+
+    
+    public boolean isUserLoggedIn() {
+        return currentUserId > 0;
+    }
+
+  
+    public void logout() {
+        System.out.println("Logging out user: " + currentUsername + " (ID: " + currentUserId + ")");
+        this.currentUserId = -1;
+        this.currentUsername = "";
     }
 
     /**
@@ -310,13 +342,41 @@ public class loginScreen extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
+        showPanel("Register");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(UserDAO.authentication(jTextField1.getText(), jPasswordField1.getText())){
-            showPanel("mainMenu");
+        String username = jTextField1.getText();
+        String password = jPasswordField1.getText();
+
+      
+        if (UserDAO.authentication(username, password)) {
+          
+            int userId = UserDAO.getUserIdByCredentials(username, password);
+
+            if (userId > 0) {
+                
+                setLoggedInUser(userId, username);
+                System.out.println("Login successful for user: " + username + " (ID: " + userId + ")");
+
+             
+                showPanel("mainMenu");
+            } else {
+               
+                System.out.println("Error: Authentication passed but couldn't get user ID");
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Login error: Could not retrieve user information",
+                        "Login Error",
+                        javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            
+            System.out.println("Login failed for user: " + username);
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Invalid username or password",
+                    "Login Failed",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -345,9 +405,7 @@ public class loginScreen extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(loginScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new loginScreen().setVisible(true);
